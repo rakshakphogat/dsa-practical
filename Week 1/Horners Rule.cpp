@@ -4,42 +4,35 @@
 #include <iomanip>
 using namespace std;
 
-double hornersRule(double coefficients[], int n, double x) {
-    double result = coefficients[n];
-    for (int i = n - 1; i >= 0; i--) {
-        result = result * x + coefficients[i];
-    }
-    return result;
+double hornersRule(vector<double> &coefficients, int n, double x, int ind) {
+    if (ind==n-1) return coefficients[ind];
+    return coefficients[ind]+x*hornersRule(coefficients, n, x, ind+1);
 }
 
 int main() {
     vector<vector<double>> timings(10, vector<double>(10));
-    int testValues[] = {100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000};
-    double x = 2.5;
+    vector<int> testValues={100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000};
+    double x=2.5;
     cout << "Horner's Rule - Time Analysis\n";
-    for (int i = 0; i < 10; i++) {
-        int n = testValues[i];
-        double* coefficients = new double[n + 1];
-        for (int k = 0; k <= n; k++) {
-            coefficients[k] = 1.5;
+    for (int i=0; i<10; i++) {
+        int n=testValues[i];
+        vector<double> coefficients(n+1, 1.5);
+        double totalTime=0.0;
+        for (int iter=0; iter<10; iter++) {
+            auto start=chrono::high_resolution_clock::now();
+            double result=hornersRule(coefficients, n, x, 0);
+            auto end=chrono::high_resolution_clock::now();
+            chrono::duration<double, micro> duration=end-start;
+            timings[i][iter]=duration.count();
+            totalTime+=duration.count();
         }
-        double totalTime = 0.0;
-        for (int iter = 0; iter < 10; iter++) {
-            auto start = chrono::high_resolution_clock::now();
-            double result = hornersRule(coefficients, n, x);
-            auto end = chrono::high_resolution_clock::now();
-            chrono::duration<double, micro> duration = end - start;
-            timings[i][iter] = duration.count();
-            totalTime += duration.count();
-        }
-        double avgTime = totalTime / 10.0;
-        cout << "Degree: " << n << " | Average Time: " << fixed << setprecision(2) << avgTime << " microseconds\n";
-        delete[] coefficients;
+        double avgTime=totalTime/10.0;
+        cout << "Degree: " << n << " | Average Time: " << avgTime << " microseconds\n";
     }
-    // for (int i = 0; i < 10; i++) {
+    // for (int i=0; i<10; i++) {
     //     cout << "Value " << testValues[i] << ": ";
-    //     for (int j = 0; j < 10; j++) {
-    //         cout << fixed << setprecision(2) << timings[i][j] << " ";
+    //     for (int j=0; j<10; j++) {
+    //         cout << timings[i][j] << " ";
     //     }
     //     cout << "\n";
     // }
