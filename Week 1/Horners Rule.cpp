@@ -2,6 +2,8 @@
 #include <chrono>
 #include <vector>
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 double hornersRule(vector<double> &coefficients, int n, double x, int ind) {
@@ -16,7 +18,11 @@ int main() {
     cout << "Horner's Rule - Time Analysis\n";
     for (int i=0; i<10; i++) {
         int n=testValues[i];
-        vector<double> coefficients(n+1, 1.5);
+        vector<double> coefficients(n+1);
+        srand(time(0) + i);
+        for (int k=0; k<=n; k++) {
+            coefficients[k]=(rand()%1000+1)/10.0;
+        }
         double totalTime=0.0;
         for (int iter=0; iter<10; iter++) {
             auto start=chrono::high_resolution_clock::now();

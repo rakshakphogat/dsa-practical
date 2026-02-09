@@ -2,6 +2,8 @@
 #include <chrono>
 #include <vector>
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int linearSearch(vector<int> &arr, int n, int target) {
@@ -18,10 +20,11 @@ int main() {
     for (int i=0; i<10; i++) {
         int n=testValues[i];
         vector<int> arr(n);
+        srand(time(0) + i);
         for (int k=0; k<n; k++) {
-            arr[k]=k+1;
+            arr[k]=rand()%1000+1;
         }
-        int target=n;
+        int target=arr[rand()%n];
         double totalTime=0.0;
         for (int iter=0; iter<10; iter++) {
             auto start=chrono::high_resolution_clock::now();

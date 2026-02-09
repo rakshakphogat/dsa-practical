@@ -2,6 +2,8 @@
 #include <chrono>
 #include <vector>
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int powerRecursive(int x, int n) {
@@ -17,8 +19,10 @@ int powerRecursive(int x, int n) {
 int main() {
     vector<vector<double>> timings(10, vector<double>(10));
     vector<int> testValues={1000, 5000, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000};
-    int x=2;
+    srand(time(0));
+    int x = rand() % 9 + 2;
     cout << "Power Recursive - Time Analysis\n";
+    cout << "Using base x = " << x << "\n\n";
     for (int i=0; i<10; i++) {
         int n=testValues[i];
         double totalTime=0.0;

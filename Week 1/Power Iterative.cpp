@@ -2,6 +2,8 @@
 #include <chrono>
 #include <vector>
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int powerIterative(int x, int n) {
@@ -15,8 +17,10 @@ int powerIterative(int x, int n) {
 int main() {
     vector<vector<double>> timings(10, vector<double>(10));
     vector<int> testValues={100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000};
-    int x=2;
+    srand(time(0));
+    int x = rand() % 9 + 2;
     cout << "Power Iterative - Time Analysis\n";
+    cout << "Using base x = " << x << "\n\n";
     for (int i=0; i<10; i++) {
         int n=testValues[i];
         double totalTime=0.0;

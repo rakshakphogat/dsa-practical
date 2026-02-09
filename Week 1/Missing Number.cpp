@@ -2,6 +2,8 @@
 #include <chrono>
 #include <vector>
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int findMissingNumber(vector<int> &arr, int n) {
@@ -20,8 +22,13 @@ int main() {
     for (int i=0; i<10; i++) {
         int n = testValues[i];
         vector<int> arr(n);
-        for (int k=0; k<n; k++) {
-            arr[k]=k+1;
+        srand(time(0)+i);
+        int missing = rand()%(n+1)+1;
+        int idx=0;
+        for (int k=1; k<=n+1; k++) {
+            if (k!=missing) {
+                arr[idx++]=k;
+            }
         }
         double totalTime=0.0;
         for (int iter=0; iter<10; iter++) {
