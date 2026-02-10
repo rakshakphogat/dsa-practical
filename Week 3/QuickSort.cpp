@@ -31,7 +31,7 @@ int main() {
 	// your code goes here
     vector<vector<double>> timings(10, vector<double>(10));
     vector<long long> testValues={1000, 5000, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000};
-    cout << "Merge Sort - Time Analysis\n";
+    cout << "Quick Sort - Time Analysis\n";
     for (long long i=0; i<10; i++) {
         long long n=testValues[i];
         vector<long long> arr(n);

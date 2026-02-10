@@ -22,7 +22,6 @@ int main() {
     srand(time(0));
     int x = rand() % 9 + 2;
     cout << "Power Recursive - Time Analysis\n";
-    cout << "Using base x = " << x << "\n\n";
     for (int i=0; i<10; i++) {
         int n=testValues[i];
         double totalTime=0.0;
