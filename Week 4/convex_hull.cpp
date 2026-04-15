@@ -1,74 +1,92 @@
 #include <iostream>
-#include <chrono>
 #include <vector>
-#include <iomanip>
-#include <cstdlib>
-#include <ctime>
+#include <stack>
+#include <algorithm>
 using namespace std;
 
 struct Point {
     int x, y;
 };
 
-long long cross(Point A, Point B, Point C) {
-    return (B.x-A.x)*(C.y-A.y)-(B.y-A.y)*(C.x-A.x);
+Point p0;
+
+long long crossProduct(Point a, Point b, Point c) {
+    return (b.x - a.x)*(c.y - a.y) - (b.y - a.y)*(c.x - a.x);
 }
 
-bool pointInsideTriangle(Point A, Point B, Point C, Point P) {
-    long long c1=cross(A, B, P);
-    long long c2=cross(B, C, P);
-    long long c3=cross(C, A, P);
-    bool has_neg=(c1<0) || (c2<0) || (c3<0);
-    bool has_pos=(c1>0) || (c2>0) || (c3>0);
-    return !(has_neg && has_pos); 
+long long distSquared(Point a, Point b) {
+    return (a.x - b.x)*(a.x - b.x) + (a.y - b.y)*(a.y - b.y);
 }
 
-int convexHull(vector<Point>& points) {
+bool compare(Point a, Point b) {
+    long long o = crossProduct(p0, a, b);
+    if (o == 0)
+        return distSquared(p0, a) < distSquared(p0, b);
+    return o > 0;
+}
+
+Point nextToTop(stack<Point> &S) {
+    Point top = S.top();
+    S.pop();
+    Point res = S.top();
+    S.push(top);
+    return res;
+}
+
+vector<Point> grahamScan(vector<Point> &points) {
     int n = points.size();
-    vector<bool> isInterior(n, false);
-    for (int i=0; i<n; i++) {
-        for (int j=i+1; j<n; j++) {
-            for (int k=j+1; k<n; k++) {
-                for (int p=0; p<n; p++) {
-                    if (p==i || p==j || p==k)
-                        continue;
-                    if (pointInsideTriangle(points[i], points[j], points[k], points[p])) {
-                        isInterior[p]=true;
-                    }
-                }
-            }
+    int minIndex = 0;
+    for (int i = 1; i < n; i++) {
+        if (points[i].y < points[minIndex].y ||
+           (points[i].y == points[minIndex].y && points[i].x < points[minIndex].x)) {
+            minIndex = i;
         }
     }
-    int boundaryCount = 0;
-    for (int i=0; i<n; i++) {
-        if (!isInterior[i]) boundaryCount++;
+    swap(points[0], points[minIndex]);
+    p0 = points[0];
+    sort(points.begin() + 1, points.end(), compare);
+    vector<Point> filtered;
+    filtered.push_back(points[0]);
+    for (int i = 1; i < n; i++) {
+        while (i < n-1 && crossProduct(p0, points[i], points[i+1]) == 0)
+            i++;
+        filtered.push_back(points[i]);
     }
-    return boundaryCount;
+    int m = filtered.size();
+    if (m < 3) {
+        cout << "Convex hull is empty\n";
+        return {};
+    }
+    stack<Point> S;
+    S.push(filtered[0]);
+    S.push(filtered[1]);
+    S.push(filtered[2]);
+    for (int i = 3; i < m; i++) {
+        while (crossProduct(nextToTop(S), S.top(), filtered[i]) <= 0) {
+            S.pop();
+        }
+        S.push(filtered[i]);
+    }
+    vector<Point> hull;
+    while (!S.empty()) {
+        hull.push_back(S.top());
+        S.pop();
+    }
+    reverse(hull.begin(), hull.end());
+    return hull;
 }
 
 int main() {
-    vector<vector<double>> timings(10, vector<double>(10));
-    vector<long long> testValues={10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
-    cout << "Convex Hull - Time Analysis\n";
-    for (long long i=0; i<10; i++) {
-        long long n=testValues[i];
-        vector<Point> points(n);
-        srand(time(0)+i);
-        for (long long k=0; k<n; k++) {
-            points[k].x = rand()%1000;
-            points[k].y = rand()%1000;
-        }
-        double timeTaken=0;
-        for (long long iter=0; iter<10; iter++) {
-            auto start=chrono::high_resolution_clock::now();
-            int result = convexHull(points);
-            auto end=chrono::high_resolution_clock::now();
-            chrono::duration<double, micro> duration=end-start;
-            timings[i][iter]=duration.count();
-            timeTaken+=duration.count();
-        }
-        double avgTime=timeTaken/10.0;
-        cout << avgTime << ",";
+    int n;
+    cin >> n;
+    vector<Point> points(n);
+    for (int i = 0; i < n; i++) {
+        cin >> points[i].x >> points[i].y;
     }
-    cout << endl;
+    vector<Point> hull = grahamScan(points);
+    cout << "Convex Hull:\n";
+    for (auto p : hull) {
+        cout << "(" << p.x << ", " << p.y << ")\n";
+    }
+    return 0;
 }

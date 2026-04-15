@@ -1,87 +1,50 @@
 #include <iostream>
 #include <vector>
-#include <queue>
 #include <algorithm>
 using namespace std;
 
-int main() {
-    int n;
-    cout << "Enter number of vertices: ";
-    cin >> n;
+struct Edge {
+    int u, v;
+};
 
-    vector<vector<int>> adj(n, vector<int>(n));
-    cout << "Enter adjacency matrix (0 means no edge, non-zero means edge):\n";
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cin >> adj[i][j];
-        }
-    }
-
-    int source = 0;
-    int destination = n - 1;
-
+int findStages(int n, vector<Edge>& edges) {
+    vector<vector<int>> adj(n);
     vector<int> indegree(n, 0);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (adj[i][j] != 0) {
-                indegree[j]++;
-            }
-        }
+    for (auto e : edges) {
+        adj[e.u].push_back(e.v);
+        indegree[e.v]++;
     }
-
-    queue<int> q;
-    for (int i = 0; i < n; i++) {
-        if (indegree[i] == 0) {
-            q.push(i);
-        }
-    }
-
+    vector<int> dp(n, 1);
     vector<int> topo;
-    while (!q.empty()) {
-        int u = q.front();
-        q.pop();
+    vector<bool> visited(n, false);
+    function<void(int)> dfs = [&](int u) {
+        visited[u] = true;
+        for (int v : adj[u]) {
+            if (!visited[v]) dfs(v);
+        }
         topo.push_back(u);
-
-        for (int v = 0; v < n; v++) {
-            if (adj[u][v] != 0) {
-                indegree[v]--;
-                if (indegree[v] == 0) {
-                    q.push(v);
-                }
-            }
-        }
+    };
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) dfs(i);
     }
-
-    if ((int)topo.size() != n) {
-        cout << "The graph contains a cycle. Multistage graph must be a DAG.\n";
-        return 0;
-    }
-
-    const int NEG_INF = -1000000000;
-    vector<int> longestEdgesFromSource(n, NEG_INF);
-    longestEdgesFromSource[source] = 0;
-
+    reverse(topo.begin(), topo.end());
     for (int u : topo) {
-        if (longestEdgesFromSource[u] == NEG_INF) {
-            continue;
-        }
-        for (int v = 0; v < n; v++) {
-            if (adj[u][v] != 0) {
-                longestEdgesFromSource[v] = max(
-                    longestEdgesFromSource[v],
-                    longestEdgesFromSource[u] + 1
-                );
-            }
+        for (int v : adj[u]) {
+            dp[v] = max(dp[v], dp[u] + 1);
         }
     }
+    return *max_element(dp.begin(), dp.end());
+}
 
-    if (longestEdgesFromSource[destination] == NEG_INF) {
-        cout << "No path exists from source (0) to destination (" << destination << ").\n";
-        return 0;
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<Edge> edges(m);
+    for (int i = 0; i < m; i++) {
+        cin >> edges[i].u >> edges[i].v;
     }
-
-    int stageCount = longestEdgesFromSource[destination] + 1;
-    cout << "Number of stages in the multistage graph: " << stageCount << "\n";
-
+    int stages = findStages(n, edges);
+    cout << "Number of stages: " << stages << endl;
     return 0;
 }

@@ -20,3 +20,5 @@ Problem: Find the Minimum Spanning Tree (MST) of a connected weighted graph
 Approach: Start from any vertex and grow the MST by repeatedly adding the minimum weight edge that connects a visited node to an unvisited node  
 Time Complexity: O(V^2) (for adjacency matrix / simple implementation)  
 Space Complexity: O(V)
+
+Print paths for all
