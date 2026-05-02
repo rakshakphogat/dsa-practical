@@ -1,0 +1,18 @@
+# Ignore CPH/problem metadata and temporary files
+**/.cph/
+.cph/
+*.prob
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Build / dependency directories
+node_modules/
+build/
