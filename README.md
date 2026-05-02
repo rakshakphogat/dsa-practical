@@ -13,10 +13,10 @@
 **Code:**
 
 ```cpp
-double hornersRule(vector<double> &coefficients, int n, double x, int ind) {
-if (ind==n-1) return coefficients[ind];
-return coefficients[ind]+x\*hornersRule(coefficients, n, x, ind+1);
-}
+    double hornersRule(vector<double> &coefficients, int n, double x, int ind) {
+    if (ind==n-1) return coefficients[ind];
+    return coefficients[ind]+x\*hornersRule(coefficients, n, x, ind+1);
+    }
 ```
 
 **Graph:**
@@ -40,12 +40,12 @@ return coefficients[ind]+x\*hornersRule(coefficients, n, x, ind+1);
 **Code:**
 
 ```cpp
-int linearSearch(vector<int> &arr, int n, int target) {
-for (int i=0; i<n; i++) {
-if (arr[i]==target) return i;
-}
-return -1;
-}
+    int linearSearch(vector<int> &arr, int n, int target) {
+    for (int i=0; i<n; i++) {
+    if (arr[i]==target) return i;
+    }
+    return -1;
+    }
 ```
 
 **Graph:**
@@ -69,14 +69,14 @@ return -1;
 **Code:**
 
 ```cpp
-int findMissingNumber(vector<int> &arr, int n) {
-for (int i=1; i<n; i++) {
-if (arr[i]-arr[i-1]!=1) {
-return arr[i-1]+1;
-}
-}
-return n+1;
-}
+    int findMissingNumber(vector<int> &arr, int n) {
+    for (int i=1; i<n; i++) {
+    if (arr[i]-arr[i-1]!=1) {
+    return arr[i-1]+1;
+    }
+    }
+    return n+1;
+    }
 ```
 
 **Graph:**
@@ -99,16 +99,16 @@ return n+1;
 **Code:**
 
 ```cpp
-void permutationGenerationOfBinaryString(int n, int idx, string &current) {
-if (idx==n) {
-cout << current << "\n";
-return;
-}
-current[idx]='0';
-permutationGenerationOfBinaryString(n, idx + 1, current);
-current[idx]='1';
-permutationGenerationOfBinaryString(n, idx + 1, current);
-}
+    void permutationGenerationOfBinaryString(int n, int idx, string &current) {
+    if (idx==n) {
+    cout << current << "\n";
+    return;
+    }
+    current[idx]='0';
+    permutationGenerationOfBinaryString(n, idx + 1, current);
+    current[idx]='1';
+    permutationGenerationOfBinaryString(n, idx + 1, current);
+    }
 ```
 
 **Graph:**
@@ -132,17 +132,17 @@ permutationGenerationOfBinaryString(n, idx + 1, current);
 **Code:**
 
 ```cpp
-void permutationGenerationOfString(int n, int idx, string &s) {
-if (idx==n) {
-cout << s << "\n";
-return;
-}
-for (int i=idx; i<n; i++) {
-swap(s[i], s[idx]);
-permutationGenerationOfString(n, idx + 1, s);
-swap(s[i], s[idx]);
-}
-}
+    void permutationGenerationOfString(int n, int idx, string &s) {
+    if (idx==n) {
+    cout << s << "\n";
+    return;
+    }
+    for (int i=idx; i<n; i++) {
+    swap(s[i], s[idx]);
+    permutationGenerationOfString(n, idx + 1, s);
+    swap(s[i], s[idx]);
+    }
+    }
 ```
 
 **Graph:**
@@ -165,13 +165,13 @@ swap(s[i], s[idx]);
 **Code:**
 
 ```cpp
-int powerIterative(int x, int n) {
-int result=1;
-for (int i=0; i<n; i++) {
-result\*=x;
-}
-return result;
-}
+    int powerIterative(int x, int n) {
+    int result=1;
+    for (int i=0; i<n; i++) {
+    result\*=x;
+    }
+    return result;
+    }
 ```
 
 **Graph:**
@@ -195,15 +195,15 @@ return result;
 **Code:**
 
 ```cpp
-int powerRecursive(int x, int n) {
-if (n==0) return 1;
-int half=powerRecursive(x, n/2);
-if (n%2==0) {
-return half*half;
-} else {
-return x*half\*half;
-}
-}
+    int powerRecursive(int x, int n) {
+    if (n==0) return 1;
+    int half=powerRecursive(x, n/2);
+    if (n%2==0) {
+    return half*half;
+    } else {
+    return x*half\*half;
+    }
+    }
 ```
 
 **Graph:**
@@ -227,13 +227,13 @@ return x*half\*half;
 **Code:**
 
 ```cpp
-int sumOfArray(vector<int> &arr, int n) {
-int sum=0;
-for (int i=0; i<n; i++) {
-sum+=arr[i];
-}
-return sum;
-}
+    int sumOfArray(vector<int> &arr, int n) {
+    int sum=0;
+    for (int i=0; i<n; i++) {
+    sum+=arr[i];
+    }
+    return sum;
+    }
 ```
 
 **Graph:**
@@ -257,11 +257,11 @@ return sum;
 **Code:**
 
 ```cpp
-void towerOfHanoi(int n, char source, char destination, char use) {
-if (n==1) return;
-towerOfHanoi(n-1, source, use, destination);
-towerOfHanoi(n-1, use, destination, source);
-}
+    void towerOfHanoi(int n, char source, char destination, char use) {
+    if (n==1) return;
+    towerOfHanoi(n-1, source, use, destination);
+    towerOfHanoi(n-1, use, destination, source);
+    }
 ```
 
 **Graph:**
@@ -285,13 +285,13 @@ towerOfHanoi(n-1, use, destination, source);
 **Code:**
 
 ```cpp
-long long binarySearch(vector<long long> &arr, long long low, long long high, long long target) {
-if (low>high) return -1;
-long long mid=(low+high)/2;
-if (arr[mid]==target) return mid;
-else if (arr[mid]>target) return binarySearch(arr, low, mid-1, target);
-else return binarySearch(arr, mid+1, high, target);
-}
+    long long binarySearch(vector<long long> &arr, long long low, long long high, long long target) {
+    if (low>high) return -1;
+    long long mid=(low+high)/2;
+    if (arr[mid]==target) return mid;
+    else if (arr[mid]>target) return binarySearch(arr, low, mid-1, target);
+    else return binarySearch(arr, mid+1, high, target);
+    }
 ```
 
 **Graph:**
@@ -315,22 +315,22 @@ else return binarySearch(arr, mid+1, high, target);
 **Code:**
 
 ```cpp
-void insertionSort(vector<int> &arr) {
-int n=arr.size();
-for (int j=1; j<n; j++) {
-int key=arr[j];
-int i=j-1;
-while (i>=0 && arr[i]>key) {
-arr[i+1]=arr[i];
-i--;
-}
-arr[i+1]=key;
-}
-for (int i=0; i<n; i++) {
-cout << arr[i] << " ";
-}
-cout << endl;
-}
+    void insertionSort(vector<int> &arr) {
+    int n=arr.size();
+    for (int j=1; j<n; j++) {
+    int key=arr[j];
+    int i=j-1;
+    while (i>=0 && arr[i]>key) {
+    arr[i+1]=arr[i];
+    i--;
+    }
+    arr[i+1]=key;
+    }
+    for (int i=0; i<n; i++) {
+    cout << arr[i] << " ";
+    }
+    cout << endl;
+    }
 ```
 
 **Graph:**
@@ -354,34 +354,34 @@ cout << endl;
 **Code:**
 
 ```cpp
-void merge(vector<long long> &arr, int lo, int mid, int hi) {
-vector<int> temp;
-int l=lo, r=mid+1;
-while (l<=mid && r<=hi) {
-if (arr[l]>=arr[r]) {
-temp.push_back(arr[r++]);
-} else {
-temp.push_back(arr[l++]);
-}
-}
-while (l<=mid) {
-temp.push_back(arr[l++]);
-}
-while (r<=hi) {
-temp.push_back(arr[r++]);
-}
-for (int i=lo; i<=hi; i++) {
-arr[i]=temp[i-lo];
-}
-}
+    void merge(vector<long long> &arr, int lo, int mid, int hi) {
+    vector<int> temp;
+    int l=lo, r=mid+1;
+    while (l<=mid && r<=hi) {
+    if (arr[l]>=arr[r]) {
+    temp.push_back(arr[r++]);
+    } else {
+    temp.push_back(arr[l++]);
+    }
+    }
+    while (l<=mid) {
+    temp.push_back(arr[l++]);
+    }
+    while (r<=hi) {
+    temp.push_back(arr[r++]);
+    }
+    for (int i=lo; i<=hi; i++) {
+    arr[i]=temp[i-lo];
+    }
+    }
 
-void mergeSort(vector<long long> &arr, int lo, int hi) {
-if (lo>=hi) return;
-int mid=(lo+hi)/2;
-mergeSort(arr, lo, mid);
-mergeSort(arr, mid+1, hi);
-merge(arr, lo, mid, hi);
-}
+    void mergeSort(vector<long long> &arr, int lo, int hi) {
+    if (lo>=hi) return;
+    int mid=(lo+hi)/2;
+    mergeSort(arr, lo, mid);
+    mergeSort(arr, mid+1, hi);
+    merge(arr, lo, mid, hi);
+    }
 ```
 
 **Graph:**
@@ -405,26 +405,26 @@ merge(arr, lo, mid, hi);
 **Code:**
 
 ```cpp
-int partition(vector<long long> &arr, int lo, int hi) {
-int pivot=arr[hi];
-int i=lo-1;
-for (int j=lo; j<=hi-1; j++) {
-if (arr[j]<pivot) {
-i++;
-swap(arr[i], arr[j]);
-}
-}
-swap(arr[i+1], arr[hi]);
-return i+1;
-}
+    int partition(vector<long long> &arr, int lo, int hi) {
+    int pivot=arr[hi];
+    int i=lo-1;
+    for (int j=lo; j<=hi-1; j++) {
+    if (arr[j]<pivot) {
+    i++;
+    swap(arr[i], arr[j]);
+    }
+    }
+    swap(arr[i+1], arr[hi]);
+    return i+1;
+    }
 
-void quickSort(vector<long long> &arr, int low, int high) {
-if (low<high) {
-int pivot=partition(arr, low, high);
-quickSort(arr, low, pivot-1);
-quickSort(arr, pivot+1, high);
-}
-}
+    void quickSort(vector<long long> &arr, int low, int high) {
+    if (low<high) {
+    int pivot=partition(arr, low, high);
+    quickSort(arr, low, pivot-1);
+    quickSort(arr, pivot+1, high);
+    }
+    }
 ```
 
 **Graph:**
@@ -448,77 +448,77 @@ quickSort(arr, pivot+1, high);
 **Code:**
 
 ```cpp
-struct Point {
-int x, y;
-};
+    struct Point {
+    int x, y;
+    };
 
-Point p0;
+    Point p0;
 
-long long crossProduct(Point a, Point b, Point c) {
-return (b.x - a.x)_(c.y - a.y) - (b.y - a.y)_(c.x - a.x);
-}
+    long long crossProduct(Point a, Point b, Point c) {
+    return (b.x - a.x)_(c.y - a.y) - (b.y - a.y)_(c.x - a.x);
+    }
 
-long long distSquared(Point a, Point b) {
-return (a.x - b.x)_(a.x - b.x) + (a.y - b.y)_(a.y - b.y);
-}
+    long long distSquared(Point a, Point b) {
+    return (a.x - b.x)_(a.x - b.x) + (a.y - b.y)_(a.y - b.y);
+    }
 
-bool compare(Point a, Point b) {
-long long o = crossProduct(p0, a, b);
-if (o == 0)
-return distSquared(p0, a) < distSquared(p0, b);
-return o > 0;
-}
+    bool compare(Point a, Point b) {
+    long long o = crossProduct(p0, a, b);
+    if (o == 0)
+    return distSquared(p0, a) < distSquared(p0, b);
+    return o > 0;
+    }
 
-Point nextToTop(stack<Point> &S) {
-Point top = S.top();
-S.pop();
-Point res = S.top();
-S.push(top);
-return res;
-}
+    Point nextToTop(stack<Point> &S) {
+    Point top = S.top();
+    S.pop();
+    Point res = S.top();
+    S.push(top);
+    return res;
+    }
 
-vector<Point> grahamScan(vector<Point> &points) {
-int n = points.size();
-int minIndex = 0;
-for (int i = 1; i < n; i++) {
-if (points[i].y < points[minIndex].y ||
-(points[i].y == points[minIndex].y && points[i].x < points[minIndex].x)) {
-minIndex = i;
-}
-}
-swap(points[0], points[minIndex]);
-p0 = points[0];
-sort(points.begin() + 1, points.end(), compare);
-vector<Point> filtered;
-filtered.push_back(points[0]);
-for (int i = 1; i < n; i++) {
-while (i < n-1 && crossProduct(p0, points[i], points[i+1]) == 0)
-i++;
-filtered.push_back(points[i]);
-}
-int m = filtered.size();
-if (m < 3) {
-cout << "Convex hull is empty\n";
-return {};
-}
-stack<Point> S;
-S.push(filtered[0]);
-S.push(filtered[1]);
-S.push(filtered[2]);
-for (int i = 3; i < m; i++) {
-while (crossProduct(nextToTop(S), S.top(), filtered[i]) <= 0) {
-S.pop();
-}
-S.push(filtered[i]);
-}
-vector<Point> hull;
-while (!S.empty()) {
-hull.push_back(S.top());
-S.pop();
-}
-reverse(hull.begin(), hull.end());
-return hull;
-}
+    vector<Point> grahamScan(vector<Point> &points) {
+    int n = points.size();
+    int minIndex = 0;
+    for (int i = 1; i < n; i++) {
+    if (points[i].y < points[minIndex].y ||
+    (points[i].y == points[minIndex].y && points[i].x < points[minIndex].x)) {
+    minIndex = i;
+    }
+    }
+    swap(points[0], points[minIndex]);
+    p0 = points[0];
+    sort(points.begin() + 1, points.end(), compare);
+    vector<Point> filtered;
+    filtered.push_back(points[0]);
+    for (int i = 1; i < n; i++) {
+    while (i < n-1 && crossProduct(p0, points[i], points[i+1]) == 0)
+    i++;
+    filtered.push_back(points[i]);
+    }
+    int m = filtered.size();
+    if (m < 3) {
+    cout << "Convex hull is empty\n";
+    return {};
+    }
+    stack<Point> S;
+    S.push(filtered[0]);
+    S.push(filtered[1]);
+    S.push(filtered[2]);
+    for (int i = 3; i < m; i++) {
+    while (crossProduct(nextToTop(S), S.top(), filtered[i]) <= 0) {
+    S.pop();
+    }
+    S.push(filtered[i]);
+    }
+    vector<Point> hull;
+    while (!S.empty()) {
+    hull.push_back(S.top());
+    S.pop();
+    }
+    reverse(hull.begin(), hull.end());
+    return hull;
+    }
 ```
 
 **Graph:**
@@ -542,33 +542,33 @@ return hull;
 **Code:**
 
 ```cpp
-using Item = pair<int, int>;
+    using Item = pair<int, int>;
 
-double take_fractional_items(const vector<Item>& items, int capacity) {
-double total_profit = 0.0;
-for (const auto& item : items) {
-if (capacity <= 0) {
-break;
-}
-int profit = item.first;
-int weight = item.second;
-if (capacity >= weight) {
-total_profit += profit;
-capacity -= weight;
-} else {
-total_profit += static_cast<double>(profit) \* capacity / weight;
-capacity = 0;
-}
-}
-return total_profit;
-}
+    double take_fractional_items(const vector<Item>& items, int capacity) {
+    double total_profit = 0.0;
+    for (const auto& item : items) {
+    if (capacity <= 0) {
+    break;
+    }
+    int profit = item.first;
+    int weight = item.second;
+    if (capacity >= weight) {
+    total_profit += profit;
+    capacity -= weight;
+    } else {
+    total_profit += static_cast<double>(profit) \* capacity / weight;
+    capacity = 0;
+    }
+    }
+    return total_profit;
+    }
 
-double sorting_by_profit_to_weight_ratio(vector<Item> items, int n, int M) {
-sort(items.begin(), items.end(), [](const pair<int, int>& a, const pair<int, int>& b) {
-return (double)a.first / a.second > (double)b.first / b.second;
-});
-return take_fractional_items(items, M);
-}
+    double sorting_by_profit_to_weight_ratio(vector<Item> items, int n, int M) {
+    sort(items.begin(), items.end(), [](const pair<int, int>& a, const pair<int, int>& b) {
+    return (double)a.first / a.second > (double)b.first / b.second;
+    });
+    return take_fractional_items(items, M);
+    }
 ```
 
 **Graph:**
@@ -592,74 +592,74 @@ return take_fractional_items(items, M);
 **Code:**
 
 ```cpp
-typedef vector<vector<int>> Matrix;
+    typedef vector<vector<int>> Matrix;
 
-Matrix add(Matrix A, Matrix B, int n) {
-Matrix C(n, vector<int>(n));
-for(int i=0;i<n;i++)
-for(int j=0;j<n;j++)
-C[i][j] = A[i][j] + B[i][j];
-return C;
-}
+    Matrix add(Matrix A, Matrix B, int n) {
+    Matrix C(n, vector<int>(n));
+    for(int i=0;i<n;i++)
+    for(int j=0;j<n;j++)
+    C[i][j] = A[i][j] + B[i][j];
+    return C;
+    }
 
-Matrix subtract(Matrix A, Matrix B, int n) {
-Matrix C(n, vector<int>(n));
-for(int i=0;i<n;i++)
-for(int j=0;j<n;j++)
-C[i][j] = A[i][j] - B[i][j];
-return C;
-}
+    Matrix subtract(Matrix A, Matrix B, int n) {
+    Matrix C(n, vector<int>(n));
+    for(int i=0;i<n;i++)
+    for(int j=0;j<n;j++)
+    C[i][j] = A[i][j] - B[i][j];
+    return C;
+    }
 
-Matrix strassen(Matrix A, Matrix B, int n) {
-Matrix C(n, vector<int>(n, 0));
-if(n == 1) {
-C[0][0] = A[0][0] \* B[0][0];
-return C;
-}
-int k = n/2;
-Matrix A11(k, vector<int>(k)), A12(k, vector<int>(k)),
-A21(k, vector<int>(k)), A22(k, vector<int>(k));
-Matrix B11(k, vector<int>(k)), B12(k, vector<int>(k)),
-B21(k, vector<int>(k)), B22(k, vector<int>(k));
+    Matrix strassen(Matrix A, Matrix B, int n) {
+    Matrix C(n, vector<int>(n, 0));
+    if(n == 1) {
+    C[0][0] = A[0][0] \* B[0][0];
+    return C;
+    }
+    int k = n/2;
+    Matrix A11(k, vector<int>(k)), A12(k, vector<int>(k)),
+    A21(k, vector<int>(k)), A22(k, vector<int>(k));
+    Matrix B11(k, vector<int>(k)), B12(k, vector<int>(k)),
+    B21(k, vector<int>(k)), B22(k, vector<int>(k));
 
-for(int i=0;i<k;i++){
-	for(int j=0;j<k;j++){
-		A11[i][j] = A[i][j];
-		A12[i][j] = A[i][j+k];
-		A21[i][j] = A[i+k][j];
-		A22[i][j] = A[i+k][j+k];
+    for(int i=0;i<k;i++){
+    	for(int j=0;j<k;j++){
+    		A11[i][j] = A[i][j];
+    		A12[i][j] = A[i][j+k];
+    		A21[i][j] = A[i+k][j];
+    		A22[i][j] = A[i+k][j+k];
 
-		B11[i][j] = B[i][j];
-		B12[i][j] = B[i][j+k];
-		B21[i][j] = B[i+k][j];
-		B22[i][j] = B[i+k][j+k];
-	}
-}
+    		B11[i][j] = B[i][j];
+    		B12[i][j] = B[i][j+k];
+    		B21[i][j] = B[i+k][j];
+    		B22[i][j] = B[i+k][j+k];
+    	}
+    }
 
-Matrix M1 = strassen(add(A11,A22,k), add(B11,B22,k), k);
-Matrix M2 = strassen(add(A21,A22,k), B11, k);
-Matrix M3 = strassen(A11, subtract(B12,B22,k), k);
-Matrix M4 = strassen(A22, subtract(B21,B11,k), k);
-Matrix M5 = strassen(add(A11,A12,k), B22, k);
-Matrix M6 = strassen(subtract(A21,A11,k), add(B11,B12,k), k);
-Matrix M7 = strassen(subtract(A12,A22,k), add(B21,B22,k), k);
+    Matrix M1 = strassen(add(A11,A22,k), add(B11,B22,k), k);
+    Matrix M2 = strassen(add(A21,A22,k), B11, k);
+    Matrix M3 = strassen(A11, subtract(B12,B22,k), k);
+    Matrix M4 = strassen(A22, subtract(B21,B11,k), k);
+    Matrix M5 = strassen(add(A11,A12,k), B22, k);
+    Matrix M6 = strassen(subtract(A21,A11,k), add(B11,B12,k), k);
+    Matrix M7 = strassen(subtract(A12,A22,k), add(B21,B22,k), k);
 
-Matrix C11 = add(subtract(add(M1,M4,k),M5,k),M7,k);
-Matrix C12 = add(M3,M5,k);
-Matrix C21 = add(M2,M4,k);
-Matrix C22 = add(subtract(add(M1,M3,k),M2,k),M6,k);
+    Matrix C11 = add(subtract(add(M1,M4,k),M5,k),M7,k);
+    Matrix C12 = add(M3,M5,k);
+    Matrix C21 = add(M2,M4,k);
+    Matrix C22 = add(subtract(add(M1,M3,k),M2,k),M6,k);
 
-for(int i=0;i<k;i++){
-	for(int j=0;j<k;j++){
-		C[i][j] = C11[i][j];
-		C[i][j+k] = C12[i][j];
-		C[i+k][j] = C21[i][j];
-		C[i+k][j+k] = C22[i][j];
-	}
-}
-return C;
+    for(int i=0;i<k;i++){
+    	for(int j=0;j<k;j++){
+    		C[i][j] = C11[i][j];
+    		C[i][j+k] = C12[i][j];
+    		C[i+k][j] = C21[i][j];
+    		C[i+k][j+k] = C22[i][j];
+    	}
+    }
+    return C;
 
-}
+    }
 ```
 
 **Graph:**
@@ -683,47 +683,47 @@ return C;
 **Code:**
 
 ```cpp
-struct Edge {
-int to, weight;
-};
+    struct Edge {
+    int to, weight;
+    };
 
-vector<int> dijkstra(vector<vector<Edge>> &graph, int source, vector<int> &parent) {
-int n = graph.size();
-vector<int> dist(n, INT_MAX);
-priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+    vector<int> dijkstra(vector<vector<Edge>> &graph, int source, vector<int> &parent) {
+    int n = graph.size();
+    vector<int> dist(n, INT_MAX);
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
 
-dist[source] = 0;
-pq.push({0, source});
-parent[source] = -1;
+    dist[source] = 0;
+    pq.push({0, source});
+    parent[source] = -1;
 
-while (!pq.empty()) {
-	int d = pq.top().first;
-	int u = pq.top().second;
-	pq.pop();
+    while (!pq.empty()) {
+    	int d = pq.top().first;
+    	int u = pq.top().second;
+    	pq.pop();
 
-	if (d != dist[u]) continue;
+    	if (d != dist[u]) continue;
 
-	for (auto edge : graph[u]) {
-		int v = edge.to;
-		int w = edge.weight;
+    	for (auto edge : graph[u]) {
+    		int v = edge.to;
+    		int w = edge.weight;
 
-		if (dist[u] + w < dist[v]) {
-			dist[v] = dist[u] + w;
-			parent[v] = u;
-			pq.push({dist[v], v});
-		}
-	}
-}
+    		if (dist[u] + w < dist[v]) {
+    			dist[v] = dist[u] + w;
+    			parent[v] = u;
+    			pq.push({dist[v], v});
+    		}
+    	}
+    }
 
-return dist;
+    return dist;
 
-}
+    }
 
-void printPath(int v, vector<int> &parent) {
-if (v == -1) return;
-printPath(parent[v], parent);
-cout << v << " ";
-}
+    void printPath(int v, vector<int> &parent) {
+    if (v == -1) return;
+    printPath(parent[v], parent);
+    cout << v << " ";
+    }
 ```
 
 **Graph:**
@@ -747,60 +747,60 @@ cout << v << " ";
 **Code:**
 
 ```cpp
-struct Edge {
-int u, v, weight;
-};
+    struct Edge {
+    int u, v, weight;
+    };
 
-class DisjointSet {
-private:
-vector<int> parent, rankValue;
+    class DisjointSet {
+    private:
+    vector<int> parent, rankValue;
 
-public:
-DisjointSet(int n) {
-parent.resize(n);
-rankValue.assign(n, 0);
-for (int i=0; i<n; i++) {
-parent[i]=i;
-}
-}
-int findParent(int node) {
-if (parent[node]==node) {
-return node;
-}
-return parent[node]=findParent(parent[node]);
-}
+    public:
+    DisjointSet(int n) {
+    parent.resize(n);
+    rankValue.assign(n, 0);
+    for (int i=0; i<n; i++) {
+    parent[i]=i;
+    }
+    }
+    int findParent(int node) {
+    if (parent[node]==node) {
+    return node;
+    }
+    return parent[node]=findParent(parent[node]);
+    }
 
-void unionSet(int u, int v) {
-	u=findParent(u);
-	v=findParent(v);
-	if (u==v) return;
-	if (rankValue[u]<rankValue[v]) {
-		parent[u]=v;
-	} else if (rankValue[u]>rankValue[v]) {
-		parent[v]=u;
-	} else {
-		parent[v]=u;
-		rankValue[u]++;
-	}
-}
+    void unionSet(int u, int v) {
+    	u=findParent(u);
+    	v=findParent(v);
+    	if (u==v) return;
+    	if (rankValue[u]<rankValue[v]) {
+    		parent[u]=v;
+    	} else if (rankValue[u]>rankValue[v]) {
+    		parent[v]=u;
+    	} else {
+    		parent[v]=u;
+    		rankValue[u]++;
+    	}
+    }
 
-};
+    };
 
-int kruskal(vector<Edge> &edges, int n, vector<Edge> &mst) {
-sort(edges.begin(), edges.end(), [](Edge &a, Edge &b) {
-return a.weight < b.weight;
-});
-DisjointSet ds(n);
-int minCost = 0;
-for (auto edge : edges) {
-if (ds.findParent(edge.u) != ds.findParent(edge.v)) {
-minCost += edge.weight;
-mst.push_back(edge);
-ds.unionSet(edge.u, edge.v);
-}
-}
-return minCost;
-}
+    int kruskal(vector<Edge> &edges, int n, vector<Edge> &mst) {
+    sort(edges.begin(), edges.end(), [](Edge &a, Edge &b) {
+    return a.weight < b.weight;
+    });
+    DisjointSet ds(n);
+    int minCost = 0;
+    for (auto edge : edges) {
+    if (ds.findParent(edge.u) != ds.findParent(edge.v)) {
+    minCost += edge.weight;
+    mst.push_back(edge);
+    ds.unionSet(edge.u, edge.v);
+    }
+    }
+    return minCost;
+    }
 ```
 
 **Graph:**
@@ -824,36 +824,36 @@ return minCost;
 **Code:**
 
 ```cpp
-struct Edge {
-int to, weight;
-};
+    struct Edge {
+    int to, weight;
+    };
 
-int prims(vector<vector<Edge>> &graph, vector<pair<int,int>> &mstEdges) {
-int n = graph.size();
-vector<bool> visited(n, false);
-vector<int> parent(n, -1);
-priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
-pq.push({0, 0});
-int minCost = 0;
-while (!pq.empty()) {
-int weight = pq.top().first;
-int u = pq.top().second;
-pq.pop();
-if (visited[u]) continue;
-visited[u] = true;
-minCost += weight;
-if (parent[u] != -1) {
-mstEdges.push_back({parent[u], u});
-}
-for (auto edge : graph[u]) {
-if (!visited[edge.to]) {
-pq.push({edge.weight, edge.to});
-parent[edge.to] = u;
-}
-}
-}
-return minCost;
-}
+    int prims(vector<vector<Edge>> &graph, vector<pair<int,int>> &mstEdges) {
+    int n = graph.size();
+    vector<bool> visited(n, false);
+    vector<int> parent(n, -1);
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+    pq.push({0, 0});
+    int minCost = 0;
+    while (!pq.empty()) {
+    int weight = pq.top().first;
+    int u = pq.top().second;
+    pq.pop();
+    if (visited[u]) continue;
+    visited[u] = true;
+    minCost += weight;
+    if (parent[u] != -1) {
+    mstEdges.push_back({parent[u], u});
+    }
+    for (auto edge : graph[u]) {
+    if (!visited[edge.to]) {
+    pq.push({edge.weight, edge.to});
+    parent[edge.to] = u;
+    }
+    }
+    }
+    return minCost;
+    }
 ```
 
 **Graph:**
@@ -877,38 +877,38 @@ return minCost;
 **Code:**
 
 ```cpp
-struct Edge {
-int u, v;
-};
+    struct Edge {
+    int u, v;
+    };
 
-int findStages(int n, vector<Edge>& edges) {
-vector<vector<int>> adj(n);
-vector<int> indegree(n, 0);
-for (auto e : edges) {
-adj[e.u].push_back(e.v);
-indegree[e.v]++;
-}
-vector<int> dp(n, 1);
-vector<int> topo;
-vector<bool> visited(n, false);
-function<void(int)> dfs = [&](int u) {
-visited[u] = true;
-for (int v : adj[u]) {
-if (!visited[v]) dfs(v);
-}
-topo.push_back(u);
-};
-for (int i = 0; i < n; i++) {
-if (!visited[i]) dfs(i);
-}
-reverse(topo.begin(), topo.end());
-for (int u : topo) {
-for (int v : adj[u]) {
-dp[v] = max(dp[v], dp[u] + 1);
-}
-}
-return \*max_element(dp.begin(), dp.end());
-}
+    int findStages(int n, vector<Edge>& edges) {
+    vector<vector<int>> adj(n);
+    vector<int> indegree(n, 0);
+    for (auto e : edges) {
+    adj[e.u].push_back(e.v);
+    indegree[e.v]++;
+    }
+    vector<int> dp(n, 1);
+    vector<int> topo;
+    vector<bool> visited(n, false);
+    function<void(int)> dfs = [&](int u) {
+    visited[u] = true;
+    for (int v : adj[u]) {
+    if (!visited[v]) dfs(v);
+    }
+    topo.push_back(u);
+    };
+    for (int i = 0; i < n; i++) {
+    if (!visited[i]) dfs(i);
+    }
+    reverse(topo.begin(), topo.end());
+    for (int u : topo) {
+    for (int v : adj[u]) {
+    dp[v] = max(dp[v], dp[u] + 1);
+    }
+    }
+    return \*max_element(dp.begin(), dp.end());
+    }
 ```
 
 **Graph:**
@@ -932,9 +932,9 @@ return \*max_element(dp.begin(), dp.end());
 **Code:**
 
 ```cpp
-struct Edge {
-int to, weight;
-};
+    struct Edge {
+    int to, weight;
+    };
 ```
 
 **Graph:**
@@ -958,17 +958,17 @@ int to, weight;
 **Code:**
 
 ```cpp
-int V;
-vector<int> par;
+    int V;
+    vector<int> par;
 
-int find(int i) {
-if (par[i] == i) return i;
-return par[i] = find(par[i]);
-}
+    int find(int i) {
+    if (par[i] == i) return i;
+    return par[i] = find(par[i]);
+    }
 
-void Union(int x, int y) {
-par[find(x)] = find(y);
-}
+    void Union(int x, int y) {
+    par[find(x)] = find(y);
+    }
 ```
 
 **Graph:**
@@ -990,38 +990,38 @@ par[find(x)] = find(y);
 **Code:**
 
 ```cpp
-struct Edge {
-int u, v;
-};
+    struct Edge {
+    int u, v;
+    };
 
-int findStages(int n, vector<Edge>& edges) {
-vector<vector<int>> adj(n);
-vector<int> indegree(n, 0);
-for (auto e : edges) {
-adj[e.u].push_back(e.v);
-indegree[e.v]++;
-}
-vector<int> dp(n, 1);
-vector<int> topo;
-vector<bool> visited(n, false);
-function<void(int)> dfs = [&](int u) {
-visited[u] = true;
-for (int v : adj[u]) {
-if (!visited[v]) dfs(v);
-}
-topo.push_back(u);
-};
-for (int i = 0; i < n; i++) {
-if (!visited[i]) dfs(i);
-}
-reverse(topo.begin(), topo.end());
-for (int u : topo) {
-for (int v : adj[u]) {
-dp[v] = max(dp[v], dp[u] + 1);
-}
-}
-return \*max_element(dp.begin(), dp.end());
-}
+    int findStages(int n, vector<Edge>& edges) {
+    vector<vector<int>> adj(n);
+    vector<int> indegree(n, 0);
+    for (auto e : edges) {
+    adj[e.u].push_back(e.v);
+    indegree[e.v]++;
+    }
+    vector<int> dp(n, 1);
+    vector<int> topo;
+    vector<bool> visited(n, false);
+    function<void(int)> dfs = [&](int u) {
+    visited[u] = true;
+    for (int v : adj[u]) {
+    if (!visited[v]) dfs(v);
+    }
+    topo.push_back(u);
+    };
+    for (int i = 0; i < n; i++) {
+    if (!visited[i]) dfs(i);
+    }
+    reverse(topo.begin(), topo.end());
+    for (int u : topo) {
+    for (int v : adj[u]) {
+    dp[v] = max(dp[v], dp[u] + 1);
+    }
+    }
+    return \*max_element(dp.begin(), dp.end());
+    }
 ```
 
 **Graph:**
@@ -1043,33 +1043,33 @@ return \*max_element(dp.begin(), dp.end());
 **Code:**
 
 ```cpp
-int matrixMin(vector<int> &arr, int i, int j, vector<vector<int>> &dp, vector<vector<int>> &S) {
-if (i == j) return 0;
-if (dp[i][j] != -1) return dp[i][j];
-int minCost = INT_MAX;
-for (int k = i; k < j; k++) {
-int cost1 = matrixMin(arr, i, k, dp, S);
-int cost2 = matrixMin(arr, k + 1, j, dp, S);
-int costMultiply = arr[i-1]*arr[k]*arr[j];
-int total = cost1 + cost2 + costMultiply;
-if (total < minCost) {
-minCost = total;
-S[i][j] = k;
-}
-}
-return dp[i][j] = minCost;
-}
+    int matrixMin(vector<int> &arr, int i, int j, vector<vector<int>> &dp, vector<vector<int>> &S) {
+    if (i == j) return 0;
+    if (dp[i][j] != -1) return dp[i][j];
+    int minCost = INT_MAX;
+    for (int k = i; k < j; k++) {
+    int cost1 = matrixMin(arr, i, k, dp, S);
+    int cost2 = matrixMin(arr, k + 1, j, dp, S);
+    int costMultiply = arr[i-1]*arr[k]*arr[j];
+    int total = cost1 + cost2 + costMultiply;
+    if (total < minCost) {
+    minCost = total;
+    S[i][j] = k;
+    }
+    }
+    return dp[i][j] = minCost;
+    }
 
-void printPath(int i, int j, vector<vector<int>> &S) {
-if (i == j) {
-cout << "A" << i;
-return;
-}
-cout << "(";
-printPath(i, S[i][j], S);
-printPath(S[i][j]+1, j, S);
-cout << ")";
-}
+    void printPath(int i, int j, vector<vector<int>> &S) {
+    if (i == j) {
+    cout << "A" << i;
+    return;
+    }
+    cout << "(";
+    printPath(i, S[i][j], S);
+    printPath(S[i][j]+1, j, S);
+    cout << ")";
+    }
 ```
 
 **Graph:**
@@ -1093,53 +1093,53 @@ cout << ")";
 **Code:**
 
 ```cpp
-int backwardPropagation(vector<vector<pair<int, int>>> &adj, int n, vector<int> &path) {
-vector<int> dist(n, INT_MAX), parent(n, -1);
-dist[0] = 0;
-for (int i = 0; i < n; i++) {
-for (auto edge: adj[i]) {
-int v = edge.first, w = edge.second;
-if (dist[i] != INT_MAX && dist[i] + w < dist[v]) {
-dist[v] = dist[i] + w;
-parent[v] = i;
-}
-}
-}
-int curr = n-1;
-cout << "Path: ";
-for (auto x: path) cout << x << " ";
-cout << endl;
-cout << "DIST: ";
-for (auto x: dist) cout << x << " ";
-cout << endl;
-while (curr != -1) {
-path.push_back(curr);
-curr = parent[curr];
-}
-reverse(path.begin(), path.end());
-return dist[n-1];
-}
+    int backwardPropagation(vector<vector<pair<int, int>>> &adj, int n, vector<int> &path) {
+    vector<int> dist(n, INT_MAX), parent(n, -1);
+    dist[0] = 0;
+    for (int i = 0; i < n; i++) {
+    for (auto edge: adj[i]) {
+    int v = edge.first, w = edge.second;
+    if (dist[i] != INT_MAX && dist[i] + w < dist[v]) {
+    dist[v] = dist[i] + w;
+    parent[v] = i;
+    }
+    }
+    }
+    int curr = n-1;
+    cout << "Path: ";
+    for (auto x: path) cout << x << " ";
+    cout << endl;
+    cout << "DIST: ";
+    for (auto x: dist) cout << x << " ";
+    cout << endl;
+    while (curr != -1) {
+    path.push_back(curr);
+    curr = parent[curr];
+    }
+    reverse(path.begin(), path.end());
+    return dist[n-1];
+    }
 
-int forwardPropagation(vector<vector<pair<int, int>>> &adj, int n, vector<int> &path) {
-vector<int> dist(n+1, INT_MAX), parent(n, -1);
-dist[n-1] = 0;
-for (int i=n-1; i>=0; i--) {
-for (auto edge: adj[i]) {
-int v = edge.first, w = edge.second;
-if (dist[v] != INT_MAX && dist[v] + w < dist[i]) {
-dist[i] = dist[v] + w;
-parent[i] = v;
-}
-}
-}
-int curr = 0;
-while (curr != -1) {
-path.push_back(curr);
-curr = parent[curr];
-}
-reverse(path.begin(), path.end());
-return dist[0];
-}
+    int forwardPropagation(vector<vector<pair<int, int>>> &adj, int n, vector<int> &path) {
+    vector<int> dist(n+1, INT_MAX), parent(n, -1);
+    dist[n-1] = 0;
+    for (int i=n-1; i>=0; i--) {
+    for (auto edge: adj[i]) {
+    int v = edge.first, w = edge.second;
+    if (dist[v] != INT_MAX && dist[v] + w < dist[i]) {
+    dist[i] = dist[v] + w;
+    parent[i] = v;
+    }
+    }
+    }
+    int curr = 0;
+    while (curr != -1) {
+    path.push_back(curr);
+    curr = parent[curr];
+    }
+    reverse(path.begin(), path.end());
+    return dist[0];
+    }
 ```
 
 **Graph:**
@@ -1163,7 +1163,7 @@ return dist[0];
 **Code:**
 
 ```cpp
-const int INF = 1e9;
+    const int INF = 1e9;
 ```
 
 **Graph:**
@@ -1187,28 +1187,28 @@ const int INF = 1e9;
 **Code:**
 
 ```cpp
-const int INF=1e9;
+    const int INF=1e9;
 
-int n;
-vector<vector<int>> dist;
-map<pair<int, set<int>>, int> dp;
+    int n;
+    vector<vector<int>> dist;
+    map<pair<int, set<int>>, int> dp;
 
-int g(int i, set<int> S) {
-if (S.empty()) {
-return dist[i][0];
-}
-if (dp.find({i, S}) != dp.end()) {
-return dp[{i, S}];
-}
-int ans = INF;
-for (int j : S) {
-set<int> nextS = S;
-nextS.erase(j);
-int cost = dist[i][j] + g(j, nextS);
-ans = min(ans, cost);
-}
-return dp[{i, S}] = ans;
-}
+    int g(int i, set<int> S) {
+    if (S.empty()) {
+    return dist[i][0];
+    }
+    if (dp.find({i, S}) != dp.end()) {
+    return dp[{i, S}];
+    }
+    int ans = INF;
+    for (int j : S) {
+    set<int> nextS = S;
+    nextS.erase(j);
+    int cost = dist[i][j] + g(j, nextS);
+    ans = min(ans, cost);
+    }
+    return dp[{i, S}] = ans;
+    }
 ```
 
 **Graph:**
@@ -1220,3 +1220,201 @@ return dp[{i, S}] = ans;
 ```
 
 ```
+### **Practical 28. Graph Coloring**
+
+**Problem Statement:** Given a graph, determine if it can be colored using at most m colors such that no two adjacent vertices have the same color. If possible, print the coloring; otherwise, print "Not possible to color".
+
+**Algorithm of Solution:**
+
+1. Use backtracking to try coloring each vertex with each available color.
+2. For each vertex, check if the color is safe (no adjacent vertex has the same color).
+3. If a valid coloring is found, return true; otherwise, backtrack and try a different color.
+4. If all vertices are colored successfully, print the solution; otherwise, print "Not possible".
+
+**Code:**
+
+```cpp
+    bool isSafe(int vertex, vector<vector<int>>& graph, vector<int>& color, int c) {
+        for (int i = 0; i < graph.size(); i++) {
+            if (graph[vertex][i] && c == color[i])
+                return false;
+        }
+        return true;
+    }
+    
+    bool colorGraphUtil(vector<vector<int>>& graph, int m, vector<int>& color, int vertex) {
+        if (vertex == graph.size())
+            return true;
+    
+        for (int c = 1; c <= m; c++) {
+            if (isSafe(vertex, graph, color, c)) {
+                color[vertex] = c;
+                
+                if (colorGraphUtil(graph, m, color, vertex + 1))
+                    return true;
+                
+                color[vertex] = 0;
+            }
+        }
+        return false;
+    }
+    
+    void colorGraph(vector<vector<int>>& graph, int m) {
+        int n = graph.size();
+        vector<int> color(n, 0);
+        
+        if (colorGraphUtil(graph, m, color, 0)) {
+            cout << "Graph coloring is possible:\n";
+            for (int i = 0; i < n; i++) {
+                cout << "Vertex " << i << " -> Color " << color[i] << "\n";
+            }
+        } else {
+            cout << "Not possible to color the graph with " << m << " colors\n";
+        }
+    }
+```
+
+**Graph:**
+
+**Time Complexity:** Best = Average = Worst = O(m^n) where m is colors and n is vertices
+
+**Space Complexity:** O(n)
+
+### **Practical 29. Hamiltonian Cycle**
+
+**Problem Statement:** Given a graph, determine if a Hamiltonian cycle exists. A Hamiltonian cycle is a cycle that visits every vertex exactly once and returns to the starting vertex. If it exists, print the cycle; otherwise, print "No Hamiltonian cycle exists".
+
+**Algorithm of Solution:**
+
+1. Use backtracking starting from vertex 0.
+2. For each position in the path, try placing each unvisited vertex that is adjacent to the previous vertex.
+3. Once all vertices are placed, check if the last vertex connects back to the first vertex.
+4. If valid, print the cycle; otherwise, backtrack and try a different path.
+
+**Code:**
+
+```cpp
+    bool isSafe(int v, vector<vector<int>>& graph, vector<int>& path, int pos) {
+        if (graph[path[pos - 1]][v] == 0)
+            return false;
+        
+        for (int i = 0; i < pos; i++)
+            if (path[i] == v)
+                return false;
+        
+        return true;
+    }
+    
+    bool hamiltonianUtil(vector<vector<int>>& graph, vector<int>& path, int pos, int n) {
+        if (pos == n) {
+            if (graph[path[pos - 1]][path[0]] == 1)
+                return true;
+            else
+                return false;
+        }
+        
+        for (int v = 1; v < n; v++) {
+            if (isSafe(v, graph, path, pos)) {
+                path[pos] = v;
+                
+                if (hamiltonianUtil(graph, path, pos + 1, n))
+                    return true;
+                
+                path[pos] = -1;
+            }
+        }
+        
+        return false;
+    }
+    
+    void hamiltonianCycle(vector<vector<int>>& graph, int n) {
+        vector<int> path(n, -1);
+        path[0] = 0;
+        
+        if (hamiltonianUtil(graph, path, 1, n)) {
+            cout << "Hamiltonian cycle exists:\n";
+            for (int i = 0; i < n; i++) {
+                cout << path[i] << " ";
+            }
+            cout << path[0] << "\n";
+        } else {
+            cout << "No Hamiltonian cycle exists\n";
+        }
+    }
+```
+
+**Graph:**
+
+**Time Complexity:** Best = Average = Worst = O(n!)
+
+**Space Complexity:** O(n)
+
+### **Practical 30. N Queens Problem**
+
+**Problem Statement:** Place n queens on an n×n chessboard such that no two queens attack each other. Use backtracking to find a valid placement and print the board configuration.
+
+**Algorithm of Solution:**
+
+1. Use backtracking to place queens column by column.
+2. For each column, try placing a queen in each row.
+3. Check if the placement is safe (no conflicts with previously placed queens).
+4. If safe, place the queen and move to the next column.
+5. If a row doesn't work, backtrack and try the next row.
+6. When all queens are placed, print the board; otherwise, print "No solution exists".
+
+**Code:**
+
+```cpp
+    bool isSafe(vector<vector<int>>& board, int row, int col, int n) {
+        for (int i = 0; i < col; i++)
+            if (board[row][i])
+                return false;
+        
+        for (int i = row, j = col; i >= 0 && j >= 0; i--, j--)
+            if (board[i][j])
+                return false;
+        
+        for (int i = row, j = col; i < n && j >= 0; i++, j--)
+            if (board[i][j])
+                return false;
+        
+        return true;
+    }
+    
+    bool solveNQueens(vector<vector<int>>& board, int col, int n) {
+        if (col >= n)
+            return true;
+        
+        for (int row = 0; row < n; row++) {
+            if (isSafe(board, row, col, n)) {
+                board[row][col] = 1;
+                
+                if (solveNQueens(board, col + 1, n))
+                    return true;
+                
+                board[row][col] = 0;
+            }
+        }
+        
+        return false;
+    }
+    
+    void printBoard(vector<vector<int>>& board, int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j])
+                    cout << "Q ";
+                else
+                    cout << ". ";
+            }
+            cout << "\n";
+        }
+        cout << "\n";
+    }
+```
+
+**Graph:**
+
+**Time Complexity:** Best = Average = Worst = O(n!)
+
+**Space Complexity:** O(n^2)
