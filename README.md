@@ -670,15 +670,6 @@
 
 **Space Complexity:** O(n^2)
 
----
-
-## Week 11
-
-- `Week 11/graphColoring.cpp`: Graph coloring using backtracking. Reads an adjacency matrix and a number of colors `m`, prints per-vertex color assignment if possible or "Not possible to color".
-- `Week 11/hamiltonianCycle.cpp`: Hamiltonian cycle checker using backtracking. Reads an adjacency matrix and prints a Hamiltonian cycle if one exists, otherwise prints that no cycle exists.
-- `Week 11/nQueens.cpp`: N-Queens backtracking solution. Reads `n` and prints a valid board placement with `Q` marking queens if a solution exists.
-
-
 ### **Practical 17. Dijkstra**
 
 **Problem Statement:** Find the shortest path from a source vertex to all other vertices in a weighted graph with non-negative edges.
@@ -982,6 +973,8 @@
 
 **Graph:**
 
+![alt text](image-28.png)
+
 **Time Complexity:** Best = Average = Worst = O(E \* alpha(V))
 
 **Space Complexity:** O(V)
@@ -1035,7 +1028,9 @@
 
 **Graph:**
 
-**Time Complexity:** Best = Average = Worst = O(V + E)
+![alt text](image-29.png)
+
+**Time Complexity:** Worst = O(V + E)
 
 **Space Complexity:** O(V + E)
 
@@ -1222,13 +1217,16 @@
 
 **Graph:**
 
-**Time Complexity:** Best = Average = Worst = O(n^2 2^n)
+![alt text](image-24.png)
+
+**Time Complexity:** Worst = O(n^2 2^n)
 
 **Space Complexity:** O(n 2^n)
 
 ```
 
 ```
+
 ### **Practical 28. Graph Coloring**
 
 **Problem Statement:** Given a graph, determine if it can be colored using at most m colors such that no two adjacent vertices have the same color. If possible, print the coloring; otherwise, print "Not possible to color".
@@ -1250,28 +1248,28 @@
         }
         return true;
     }
-    
+
     bool colorGraphUtil(vector<vector<int>>& graph, int m, vector<int>& color, int vertex) {
         if (vertex == graph.size())
             return true;
-    
+
         for (int c = 1; c <= m; c++) {
             if (isSafe(vertex, graph, color, c)) {
                 color[vertex] = c;
-                
+
                 if (colorGraphUtil(graph, m, color, vertex + 1))
                     return true;
-                
+
                 color[vertex] = 0;
             }
         }
         return false;
     }
-    
+
     void colorGraph(vector<vector<int>>& graph, int m) {
         int n = graph.size();
         vector<int> color(n, 0);
-        
+
         if (colorGraphUtil(graph, m, color, 0)) {
             cout << "Graph coloring is possible:\n";
             for (int i = 0; i < n; i++) {
@@ -1284,6 +1282,8 @@
 ```
 
 **Graph:**
+
+![alt text](image-25.png)
 
 **Time Complexity:** Best = Average = Worst = O(m^n) where m is colors and n is vertices
 
@@ -1306,14 +1306,14 @@
     bool isSafe(int v, vector<vector<int>>& graph, vector<int>& path, int pos) {
         if (graph[path[pos - 1]][v] == 0)
             return false;
-        
+
         for (int i = 0; i < pos; i++)
             if (path[i] == v)
                 return false;
-        
+
         return true;
     }
-    
+
     bool hamiltonianUtil(vector<vector<int>>& graph, vector<int>& path, int pos, int n) {
         if (pos == n) {
             if (graph[path[pos - 1]][path[0]] == 1)
@@ -1321,25 +1321,25 @@
             else
                 return false;
         }
-        
+
         for (int v = 1; v < n; v++) {
             if (isSafe(v, graph, path, pos)) {
                 path[pos] = v;
-                
+
                 if (hamiltonianUtil(graph, path, pos + 1, n))
                     return true;
-                
+
                 path[pos] = -1;
             }
         }
-        
+
         return false;
     }
-    
+
     void hamiltonianCycle(vector<vector<int>>& graph, int n) {
         vector<int> path(n, -1);
         path[0] = 0;
-        
+
         if (hamiltonianUtil(graph, path, 1, n)) {
             cout << "Hamiltonian cycle exists:\n";
             for (int i = 0; i < n; i++) {
@@ -1354,7 +1354,9 @@
 
 **Graph:**
 
-**Time Complexity:** Best = Average = Worst = O(n!)
+![alt text](image-26.png)
+
+**Time Complexity:** Worst = O(n!)
 
 **Space Complexity:** O(n)
 
@@ -1378,36 +1380,36 @@
         for (int i = 0; i < col; i++)
             if (board[row][i])
                 return false;
-        
+
         for (int i = row, j = col; i >= 0 && j >= 0; i--, j--)
             if (board[i][j])
                 return false;
-        
+
         for (int i = row, j = col; i < n && j >= 0; i++, j--)
             if (board[i][j])
                 return false;
-        
+
         return true;
     }
-    
+
     bool solveNQueens(vector<vector<int>>& board, int col, int n) {
         if (col >= n)
             return true;
-        
+
         for (int row = 0; row < n; row++) {
             if (isSafe(board, row, col, n)) {
                 board[row][col] = 1;
-                
+
                 if (solveNQueens(board, col + 1, n))
                     return true;
-                
+
                 board[row][col] = 0;
             }
         }
-        
+
         return false;
     }
-    
+
     void printBoard(vector<vector<int>>& board, int n) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -1424,6 +1426,8 @@
 
 **Graph:**
 
-**Time Complexity:** Best = Average = Worst = O(n!)
+![alt text](image-27.png)
+
+**Time Complexity:** Worst = O(n!)
 
 **Space Complexity:** O(n^2)
