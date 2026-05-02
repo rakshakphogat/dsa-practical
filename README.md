@@ -670,6 +670,15 @@
 
 **Space Complexity:** O(n^2)
 
+---
+
+## Week 11
+
+- `Week 11/graphColoring.cpp`: Graph coloring using backtracking. Reads an adjacency matrix and a number of colors `m`, prints per-vertex color assignment if possible or "Not possible to color".
+- `Week 11/hamiltonianCycle.cpp`: Hamiltonian cycle checker using backtracking. Reads an adjacency matrix and prints a Hamiltonian cycle if one exists, otherwise prints that no cycle exists.
+- `Week 11/nQueens.cpp`: N-Queens backtracking solution. Reads `n` and prints a valid board placement with `Q` marking queens if a solution exists.
+
+
 ### **Practical 17. Dijkstra**
 
 **Problem Statement:** Find the shortest path from a source vertex to all other vertices in a weighted graph with non-negative edges.
