@@ -50,6 +50,8 @@ return -1;
 
 **Graph:**
 
+![alt text](image-1.png)
+
 **Time Complexity:** Best = O(1), Average = Worst = O(n)
 
 **Space Complexity:** O(1)
@@ -78,6 +80,7 @@ return n+1;
 ```
 
 **Graph:**
+![alt text](image-2.png)
 
 **Time Complexity:** Best = Average = Worst = O(n)
 
@@ -109,6 +112,8 @@ permutationGenerationOfBinaryString(n, idx + 1, current);
 ```
 
 **Graph:**
+
+![alt text](image-3.png)
 
 **Time Complexity:** Best = Average = Worst = O(2^n)
 
@@ -142,6 +147,8 @@ swap(s[i], s[idx]);
 
 **Graph:**
 
+![alt text](image-4.png)
+
 **Time Complexity:** Best = Average = Worst = O(n \* n!)
 
 **Space Complexity:** O(n)
@@ -168,6 +175,8 @@ return result;
 ```
 
 **Graph:**
+
+![alt text](image-5.png)
 
 **Time Complexity:** Best = Average = Worst = O(n)
 
@@ -199,11 +208,13 @@ return x*half\*half;
 
 **Graph:**
 
+![alt text](image-6.png)
+
 **Time Complexity:** Best = Average = Worst = O(log n)
 
 **Space Complexity:** O(log n)
 
-### **Practical 8. Sum of Arrays**
+### **Practical 8. Sum of Array**
 
 **Problem Statement:** Find the sum of all elements in an array.
 
@@ -226,6 +237,8 @@ return sum;
 ```
 
 **Graph:**
+
+![alt text](image-7.png)
 
 **Time Complexity:** Best = Average = Worst = O(n)
 
@@ -252,6 +265,8 @@ towerOfHanoi(n-1, use, destination, source);
 ```
 
 **Graph:**
+
+![alt text](image-8.png)
 
 **Time Complexity:** Best = Average = Worst = O(2^n)
 
@@ -280,6 +295,8 @@ else return binarySearch(arr, mid+1, high, target);
 ```
 
 **Graph:**
+
+![alt text](image-9.png)
 
 **Time Complexity:** Best = O(1), Average = Worst = O(log n)
 
@@ -317,6 +334,8 @@ cout << endl;
 ```
 
 **Graph:**
+
+![alt text](image-10.png)
 
 **Time Complexity:** Best = O(n), Average = Worst = O(n^2)
 
@@ -367,6 +386,8 @@ merge(arr, lo, mid, hi);
 
 **Graph:**
 
+![alt text](image-11.png)
+
 **Time Complexity:** Best = Average = Worst = O(n log n)
 
 **Space Complexity:** O(n)
@@ -407,6 +428,8 @@ quickSort(arr, pivot+1, high);
 ```
 
 **Graph:**
+
+![alt text](image-12.png)
 
 **Time Complexity:** Best = Average = O(n log n), Worst = O(n^2)
 
@@ -500,6 +523,8 @@ return hull;
 
 **Graph:**
 
+![alt text](image-13.png)
+
 **Time Complexity:** Best = Average = Worst = O(n log n)
 
 **Space Complexity:** O(n)
@@ -547,6 +572,8 @@ return take_fractional_items(items, M);
 ```
 
 **Graph:**
+
+![alt text](image-14.png)
 
 **Time Complexity:** Best = Average = Worst = O(n log n)
 
@@ -637,6 +664,8 @@ return C;
 
 **Graph:**
 
+![alt text](image-15.png)
+
 **Time Complexity:** Best = Average = Worst = O(n^{log_2 7}) approximately O(n^{2.81})
 
 **Space Complexity:** O(n^2)
@@ -698,6 +727,8 @@ cout << v << " ";
 ```
 
 **Graph:**
+
+![alt text](image-16.png)
 
 **Time Complexity:** Best = Average = Worst = O((V + E) log V)
 
@@ -774,6 +805,8 @@ return minCost;
 
 **Graph:**
 
+![alt text](image-17.png)
+
 **Time Complexity:** Best = Average = Worst = O(E log E)
 
 **Space Complexity:** O(V + E)
@@ -824,6 +857,8 @@ return minCost;
 ```
 
 **Graph:**
+
+![alt text](image-18.png)
 
 **Time Complexity:** Best = Average = Worst = O(E log V)
 
@@ -878,6 +913,8 @@ return \*max_element(dp.begin(), dp.end());
 
 **Graph:**
 
+![alt text](image-19.png)
+
 **Time Complexity:** Best = Average = Worst = O(V + E)
 
 **Space Complexity:** O(V + E)
@@ -901,6 +938,8 @@ int to, weight;
 ```
 
 **Graph:**
+
+![alt text](image-20.png)
 
 **Time Complexity:** Best = Average = Worst = O(V + E)
 
@@ -1035,6 +1074,8 @@ cout << ")";
 
 **Graph:**
 
+![alt text](image-21.png)
+
 **Time Complexity:** Best = Average = Worst = O(n^3)
 
 **Space Complexity:** O(n^2)
@@ -1103,6 +1144,8 @@ return dist[0];
 
 **Graph:**
 
+![alt text](image-22.png)
+
 **Time Complexity:** Best = Average = Worst = O(V + E)
 
 **Space Complexity:** O(V)
@@ -1124,6 +1167,8 @@ const int INF = 1e9;
 ```
 
 **Graph:**
+
+![alt text](image-23.png)
 
 **Time Complexity:** Best = Average = Worst = O(V^3)
 
@@ -1175,4 +1220,3 @@ return dp[{i, S}] = ans;
 ```
 
 ```
-
